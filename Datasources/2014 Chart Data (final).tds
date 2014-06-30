@@ -1,0 +1,1715 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<datasource formatted-name='csv.41303.421501273151 (copy 3)' inline='true' version='8.2' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <!-- build 8100.14.0312.2049                -->
+  <connection auto-extract='yes' character-set='65001' class='csv' directory='C:\Projects\Tableau User Group\College Choice\2014 Report' driver='' filename='tableau_output.csv' force-character-set='no' force-header='no' force-separator='no' header='yes' separator=',' workgroup-auth-mode='as-is'>
+    <relation name='tableau_output#csv' table='[tableau_output#csv]' type='table' />
+    <refresh increment-key='' incremental-updates='false'>
+    </refresh>
+  </connection>
+  <aliases enabled='yes' />
+  <column caption='p_Xaxis Parameter' datatype='boolean' name='[Calculation_0130326001630155]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[Parameters].[Parameter 2]=[xaxis]' scope-isolation='false' />
+  </column>
+  <column caption='p_group_selected' datatype='string' name='[Calculation_0350325150630941]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='if [Parameters].[Comparison 1 (copy 2)]=[group] then [group]&#13;&#10;elseif [Parameters].[Comparison 1_2 (copy)]=[group] then [group]&#13;&#10;elseif [Parameters].[Comparison 2_2 (copy)]=[group] then [group]&#13;&#10;else null &#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='p_Parameters_Sensitive (1)' datatype='boolean' name='[Calculation_0480326001705692]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[Calculation_1290208103704334]&#13;&#10;and&#13;&#10;[Calculation_0130326001630155]' scope-isolation='false' />
+  </column>
+  <column caption='p_Chart parameter (1)' datatype='boolean' name='[Calculation_1290208103704334]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[chart]=[Parameters].[Parameter 3]' scope-isolation='false' />
+  </column>
+  <column caption='count_prefix' datatype='integer' name='[Calculation_2610404105935958]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if [chart] != &quot;EOS selection avg&quot; then [count] end' scope-isolation='false' />
+  </column>
+  <column caption='count_postfix' datatype='integer' name='[Calculation_5400404105842906]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if [chart] = &quot;EOS selection avg&quot; then [count] end' scope-isolation='false' />
+  </column>
+  <column caption='c_Color for Majors' datatype='integer' name='[Calculation_7671107143925777]' role='measure' type='ordinal'>
+    <calculation class='tableau' formula='//index()&#13;&#10;last()' scope-isolation='false'>
+      <table-calc ordering-type='Rows' />
+    </calculation>
+  </column>
+  <column caption='c_Value (-f/m)' datatype='real' name='[Calculation_8701106085116348]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if xlabel = &quot;Male&quot;&#13;&#10;  then value&#13;&#10;elseif xlabel = &quot;Female&quot;&#13;&#10;  then -value&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='c_Value (wMax)' datatype='real' name='[Calculation_8821106093638489]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='//window_max(&#13;&#10;total(&#13;&#10;max(abs([Calculation_8701106085116348])))&#13;&#10;/2' scope-isolation='false'>
+      <table-calc ordering-type='Rows' />
+    </calculation>
+  </column>
+  <column caption='c_Value (-f)' datatype='real' name='[Calculation_8871106085343208]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if xlabel = &apos;Female&apos; then -[value] end' scope-isolation='false' />
+  </column>
+  <column caption='param1_value' datatype='real' default-format='n#,##0.0;-#,##0.0' name='[Calculation_9710325162256454]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if [group]=[Parameters].[Comparison 1 (copy 2)]&#13;&#10; then [value]&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='v_missing_variable_text' datatype='string' name='[Calculation_9730404102551790]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='if missing &gt;0 then&#13;&#10;&quot;&#13;&#10;&quot;&#13;&#10;//+[missing_tooltip]&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+    <calculation class='tableau' formula='1' />
+  </column>
+  <column caption='p_group_selected (order)' datatype='string' name='[Selected Group (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='if [Parameters].[Comparison 1 (copy 2)]=[group] then &apos;1&apos;&#13;&#10;elseif [Parameters].[Comparison 1_2 (copy)]=[group] then &apos;2&apos;&#13;&#10;elseif [Parameters].[Comparison 2_2 (copy)]=[group] then &apos;3&apos;&#13;&#10;else &apos;Other&apos;&#13;&#10;//else group&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='c_Value (f)' datatype='real' name='[c_Value (-f) (copy 2)]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if xlabel = &apos;Female&apos; then [value] end' scope-isolation='false' />
+  </column>
+  <column caption='c_Value (m)' datatype='real' name='[c_Value (-f) (copy)]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if xlabel = &apos;Male&apos; then [value] end' scope-isolation='false' />
+  </column>
+  <column caption='c_Value (wMax) (-)' datatype='real' name='[c_Value (wMax) (copy)]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='//window_max(&#13;&#10;total(&#13;&#10;max(abs([Calculation_8701106085116348])))&#13;&#10;*-1/2' scope-isolation='false'>
+      <table-calc ordering-type='Rows' />
+    </calculation>
+  </column>
+  <column datatype='string' name='[chart]' role='dimension' type='nominal'>
+  </column>
+  <column datatype='integer' default-format='n#,##0;-#,##0' name='[count]' role='measure' type='quantitative'>
+  </column>
+  <column datatype='string' name='[group]' role='dimension' semantic-role='[State].[Name]' type='nominal'>
+    <aliases>
+      <alias key='&quot;25\% or less&quot;' value='ACT Tested 25% or less' />
+      <alias key='&quot;26\% - 50\%&quot;' value='ACT Tested 26% - 50%' />
+      <alias key='&quot;51\% - 75\%&quot;' value='ACT Tested 51% - 75%' />
+      <alias key='&quot;76\% - 100\%&quot;' value='ACT Tested 76% - 100%' />
+      <alias key='&quot;Midwest&quot;' value='Region: Midwest' />
+      <alias key='&quot;National&quot;' value='Region: National' />
+      <alias key='&quot;Northeast&quot;' value='Region: Northeast' />
+      <alias key='&quot;South&quot;' value='Region: South' />
+      <alias key='&quot;Statewide (100\%)&quot;' value='ACT Tested Statewide (100%)' />
+      <alias key='&quot;West&quot;' value='Region: West' />
+    </aliases>
+  </column>
+  <column datatype='real' datatype-customized='true' default-format='n#,##0;-#,##0' name='[missing]' role='measure' type='quantitative'>
+  </column>
+  <column caption='p_Chart parameter (2)' datatype='boolean' name='[p_Chart parameter (1) (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[chart]=[Parameters].[Selected Bar Chart (part 1) (copy 2)]' scope-isolation='false' />
+  </column>
+  <column caption='p_Parameters_Sensitive (2)' datatype='boolean' name='[p_Parameters_Sensitive (1) (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[p_Chart parameter (1) (copy)]&#13;&#10;and&#13;&#10;[Calculation_0130326001630155]' scope-isolation='false' />
+  </column>
+  <column caption='p_Major_selected' datatype='string' name='[p_group_selected (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='if [Parameters].[Parameter 4]=[subcat] then [subcat]&#13;&#10;elseif [Parameters].[Major 1 (copy)]=[subcat] then [subcat]&#13;&#10;elseif [Parameters].[Major 1 (copy 2)]=[subcat] then [subcat]&#13;&#10;elseif [Parameters].[Major 2 (copy)]=[subcat] then [subcat]&#13;&#10;else null &#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='p_Major_selected (order)' datatype='string' name='[p_group_selected (order) (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='if [Parameters].[Parameter 4]=[subcat] then &apos;1&apos;&#13;&#10;elseif [Parameters].[Major 1 (copy)]=[subcat] then &apos;2&apos;&#13;&#10;elseif [Parameters].[Major 1 (copy 2)]=[subcat] then &apos;3&apos;&#13;&#10;elseif [Parameters].[Major 2 (copy)]=[subcat] then &apos;4&apos;&#13;&#10;else &apos;Other&apos;&#13;&#10;//else group&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='param2_value' datatype='real' default-format='n#,##0.0;-#,##0.0' name='[param1_value (copy)]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if [group]=[Parameters].[Comparison 1_2 (copy)]&#13;&#10; then [value]&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='param3_value' datatype='real' default-format='n#,##0.0;-#,##0.0' name='[param2_value (copy)]' role='measure' type='quantitative'>
+    <calculation class='tableau' formula='if [group]=[Parameters].[Comparison 2_2 (copy)]&#13;&#10; then [value]&#13;&#10;end' scope-isolation='false' />
+  </column>
+  <column caption='z_subcat (no_alias)' datatype='string' name='[subcat (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[subcat]' />
+  </column>
+  <column datatype='string' name='[subcat]' role='dimension' type='nominal'>
+    <aliases>
+      <alias key='&quot;1. 4-year Public&quot;' value='4-year Public' />
+      <alias key='&quot;1. &lt; 25 miles&quot;' value='&lt; 26 miles' />
+      <alias key='&quot;1. Out of State&quot;' value='Out of State' />
+      <alias key='&quot;2. 25-100 miles&quot;' value='26-100 miles' />
+      <alias key='&quot;2. 4-year Private&quot;' value='4-year Private' />
+      <alias key='&quot;2. In State&quot;' value='In State' />
+      <alias key='&quot;3. 2-year&quot;' value='2-year' />
+      <alias key='&quot;3. &gt; 100 miles&quot;' value='&gt; 100 miles' />
+      <alias key='&quot;&lt; Grade 12&quot;' value='&lt;12th Grade' />
+      <alias key='&quot;Do not need help educational and occupational plan&quot;' value='Do not need help with educational and occupational plans' />
+      <alias key='&quot;Grade 12&quot;' value='12th Grade' />
+    </aliases>
+  </column>
+  <column datatype='string' name='[subgroup]' role='dimension' type='nominal'>
+  </column>
+  <column aggregation='Sum' datatype='integer' name='[suborder]' role='dimension' type='ordinal'>
+  </column>
+  <column datatype='integer' default-format='n#,##0;-#,##0' name='[total]' role='measure' type='quantitative'>
+  </column>
+  <column datatype='real' default-format='n#,##0.0;-#,##0.0' name='[value]' role='measure' type='quantitative'>
+  </column>
+  <column datatype='string' name='[x1]' role='dimension' type='nominal'>
+  </column>
+  <column datatype='string' name='[x2]' role='dimension' type='nominal'>
+  </column>
+  <column datatype='string' name='[x3]' role='dimension' type='nominal'>
+  </column>
+  <column datatype='string' name='[xaxis]' role='dimension' type='nominal'>
+  </column>
+  <column caption='z_xcat (no_alias)' datatype='string' name='[xcat (copy)]' role='dimension' type='nominal'>
+    <calculation class='tableau' formula='[xlabel]' scope-isolation='false' />
+  </column>
+  <column datatype='string' name='[xlabel]' role='dimension' type='nominal'>
+  </column>
+  <column aggregation='Sum' datatype='integer' name='[xorder]' role='dimension' type='ordinal'>
+  </column>
+  <column-instance column='[value]' derivation='Sum' name='[cum:sum:value:qk:5]' pivot='key' type='quantitative'>
+    <table-calc aggregation='Sum' ordering-type='Columns' type='CumTotal' />
+  </column-instance>
+  <column-instance column='[Calculation_0350325150630941]' derivation='None' name='[none:Calculation_0350325150630941:nk]' pivot='key' type='nominal' />
+  <column-instance column='[Selected Group (copy)]' derivation='None' name='[none:Selected Group (copy):nk]' pivot='key' type='nominal' />
+  <column-instance column='[chart]' derivation='None' name='[none:chart:nk]' pivot='key' type='nominal' />
+  <column-instance column='[group]' derivation='None' name='[none:group:nk]' pivot='key' type='nominal' />
+  <column-instance column='[p_group_selected (order) (copy)]' derivation='None' name='[none:p_group_selected (order) (copy):nk]' pivot='key' type='nominal' />
+  <column-instance column='[subcat]' derivation='None' name='[none:subcat:nk]' pivot='key' type='nominal' />
+  <column-instance column='[suborder]' derivation='None' name='[none:suborder:ok]' pivot='key' type='ordinal' />
+  <column-instance column='[xaxis]' derivation='None' name='[none:xaxis:nk]' pivot='key' type='nominal' />
+  <column-instance column='[xlabel]' derivation='None' name='[none:xlabel:nk]' pivot='key' type='nominal' />
+  <column-instance column='[Calculation_9710325162256454]' derivation='Sum' name='[sum:Calculation_9710325162256454:qk]' pivot='key' type='quantitative' />
+  <column-instance column='[count]' derivation='Sum' name='[sum:count:qk]' pivot='key' type='quantitative' />
+  <column-instance column='[param1_value (copy)]' derivation='Sum' name='[sum:param1_value (copy):qk]' pivot='key' type='quantitative' />
+  <column-instance column='[param2_value (copy)]' derivation='Sum' name='[sum:param2_value (copy):qk]' pivot='key' type='quantitative' />
+  <column-instance column='[total]' derivation='Sum' name='[sum:total:qk]' pivot='key' type='quantitative' />
+  <column-instance column='[value]' derivation='Sum' name='[sum:value:qk]' pivot='key' type='quantitative' />
+  <column-instance column='[Calculation_7671107143925777]' derivation='User' name='[usr:Calculation_7671107143925777:ok:2]' pivot='key' type='ordinal'>
+    <table-calc ordering-type='Columns' />
+  </column-instance>
+  <group hidden='true' name='[Action (group,subgroup,x1,x2,x3,x4)]' name-style='unqualified' user:auto-column='sheet_link'>
+    <groupfilter function='crossjoin'>
+      <groupfilter function='level-members' level='[group]' />
+      <groupfilter function='level-members' level='[subgroup]' />
+      <groupfilter function='level-members' level='[x1]' />
+      <groupfilter function='level-members' level='[x2]' />
+      <groupfilter function='level-members' level='[x3]' />
+      <groupfilter function='level-members' level='[x4]' />
+    </groupfilter>
+  </group>
+  <group name='[Charts with &quot;Missing&quot; responses]' name-style='unqualified' user:ui-builder='lasso-group'>
+    <groupfilter function='union'>
+      <groupfilter function='member' level='[chart]' member='&quot;College type pref&quot;' />
+      <groupfilter function='member' level='[chart]' member='&quot;Distance pref&quot;' />
+      <groupfilter function='member' level='[chart]' member='&quot;Out state pref&quot;' />
+    </groupfilter>
+  </group>
+  <group name='[N-count Chart Types]' name-style='unqualified' user:ui-builder='lasso-group'>
+    <groupfilter function='union'>
+      <groupfilter function='member' level='[chart]' member='&quot;EOS score sending&quot;' />
+      <groupfilter function='member' level='[chart]' member='&quot;EOS selection avg&quot;' />
+      <groupfilter function='member' level='[chart]' member='&quot;Score sending&quot;' />
+    </groupfilter>
+  </group>
+  <group name='[States]' name-style='unqualified' user:ui-builder='filter-group'>
+    <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+      <groupfilter from='&quot;Alabama&quot;' function='range' level='[none:group:nk]' to='&quot;Michigan&quot;' />
+      <groupfilter from='&quot;Minnesota&quot;' function='range' level='[none:group:nk]' to='&quot;Montana&quot;' />
+      <groupfilter from='&quot;Nebraska&quot;' function='range' level='[none:group:nk]' to='&quot;North Dakota&quot;' />
+      <groupfilter from='&quot;Ohio&quot;' function='range' level='[none:group:nk]' to='&quot;Rhode Island&quot;' />
+      <groupfilter function='member' level='[none:group:nk]' member='&quot;South Carolina&quot;' />
+      <groupfilter function='member' level='[none:group:nk]' member='&quot;South Dakota&quot;' />
+      <groupfilter from='&quot;Tennessee&quot;' function='range' level='[none:group:nk]' to='&quot;Washington&quot;' />
+      <groupfilter from='&quot;West Virginia&quot;' function='range' level='[none:group:nk]' to='&quot;Wyoming&quot;' />
+    </groupfilter>
+  </group>
+  <drill-paths>
+    <drill-path name='p_Major_selected (order), p_Major_selected'>
+      <field>[p_group_selected (order) (copy)]</field>
+      <field>[p_group_selected (copy)]</field>
+    </drill-path>
+    <drill-path name='p_group_selected, p_group_selected (order)'>
+      <field>[Selected Group (copy)]</field>
+      <field>[Calculation_0350325150630941]</field>
+    </drill-path>
+    <drill-path name='subgroup, subcat'>
+      <field>[subgroup]</field>
+      <field>[suborder]</field>
+      <field>[subcat]</field>
+    </drill-path>
+    <drill-path name='xaxis, xcat'>
+      <field>[xaxis]</field>
+      <field>[xorder]</field>
+      <field>[xlabel]</field>
+    </drill-path>
+  </drill-paths>
+  <extract count='-1' enabled='true' units='records'>
+    <connection class='dataengine' dbname='C:\Projects\1 - Clients\College Choice Report\2013-College-Choice-Report\Workbooks\2014 College Choice Report_Baseline.twb Files\Data\2014 Report\2014 Chart Data (final).tde' schema='Extract' tablename='Extract' update-time='11/6/2013 6:12:49 PM'>
+      <relation name='Extract' table='[Extract].[Extract]' type='table' />
+      <cols>
+        <map key='[Calculation_2610404105935958]' value='[Extract].[Calculation_2610404105935958]' />
+        <map key='[Calculation_5400404105842906]' value='[Extract].[Calculation_5400404105842906]' />
+        <map key='[Calculation_8701106085116348]' value='[Extract].[Calculation_8701106085116348]' />
+        <map key='[Calculation_8871106085343208]' value='[Extract].[Calculation_8871106085343208]' />
+        <map key='[Calculation_9730404102551790]' value='[Extract].[Calculation_9730404102551790]' />
+        <map key='[Number of Records]' value='[Extract].[Number of Records]' />
+        <map key='[c_Value (-f) (copy 2)]' value='[Extract].[Calculation_88711060853432081]' />
+        <map key='[c_Value (-f) (copy)]' value='[Extract].[Calculation_88711060853432082]' />
+        <map key='[chart]' value='[Extract].[chart]' />
+        <map key='[count]' value='[Extract].[count]' />
+        <map key='[group]' value='[Extract].[group]' />
+        <map key='[missing]' value='[Extract].[missing]' />
+        <map key='[subcat (copy)]' value='[Extract].[subcat (copy)]' />
+        <map key='[subcat]' value='[Extract].[subcat]' />
+        <map key='[subgroup]' value='[Extract].[subgroup]' />
+        <map key='[suborder]' value='[Extract].[suborder]' />
+        <map key='[total]' value='[Extract].[total]' />
+        <map key='[value]' value='[Extract].[value]' />
+        <map key='[x0]' value='[Extract].[x0]' />
+        <map key='[x1]' value='[Extract].[x1]' />
+        <map key='[x2]' value='[Extract].[x2]' />
+        <map key='[x3]' value='[Extract].[x3]' />
+        <map key='[xaxis]' value='[Extract].[xaxis]' />
+        <map key='[xcat (copy)]' value='[Extract].[xcat (copy)]' />
+        <map key='[xlabel]' value='[Extract].[xlabel]' />
+        <map key='[xorder]' value='[Extract].[xorder]' />
+      </cols>
+      <calculations>
+        <calculation column='[Calculation_2610404105935958]' formula='if [chart] != &quot;EOS selection avg&quot; then [count] end' />
+        <calculation column='[Calculation_5400404105842906]' formula='if [chart] = &quot;EOS selection avg&quot; then [count] end' />
+        <calculation column='[Calculation_8701106085116348]' formula='if xlabel = &quot;Male&quot;&#13;&#10;  then value&#13;&#10;elseif xlabel = &quot;Female&quot;&#13;&#10;  then -value&#13;&#10;end' />
+        <calculation column='[Calculation_8871106085343208]' formula='if xlabel = &apos;Female&apos; then -[value] end' />
+        <calculation column='[Calculation_9730404102551790]' formula='if missing &gt;0 then&#13;&#10;&quot;&#13;&#10;&quot;&#13;&#10;//+[missing_tooltip]&#13;&#10;end' />
+        <calculation column='[Number of Records]' formula='1' />
+        <calculation column='[c_Value (-f) (copy 2)]' formula='if xlabel = &apos;Female&apos; then [value] end' />
+        <calculation column='[c_Value (-f) (copy)]' formula='if xlabel = &apos;Male&apos; then [value] end' />
+        <calculation column='[subcat (copy)]' formula='[subcat]' />
+        <calculation column='[xcat (copy)]' formula='[xlabel]' />
+      </calculations>
+      <refresh increment-key='' incremental-updates='false'>
+        <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='114547' timestamp-start='2013-11-06 18:12:49.513000' />
+      </refresh>
+    </connection>
+  </extract>
+  <layout dim-ordering='alphabetic' dim-percentage='0.714602' group-percentage='0.0829646' measure-ordering='alphabetic' measure-percentage='0.129425' show-structure='true' />
+  <style>
+    <style-rule element='mark'>
+      <encoding attr='color' field='[none:Calculation_0350325150630941:nk]' type='palette'>
+        <map to='#1f77b4'>
+          <bucket>%null%</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;Nebraska&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;Mississippi&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;Michigan&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;Massachusetts&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Rhode Island&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Tennessee&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Colorado&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;Illinois&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='shape' field='[:Measure Names]' type='shape'>
+        <map to=':filled/circle'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:Calculation_9710325162256454:qk]&quot;</bucket>
+        </map>
+        <map to=':filled/diamond'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:param2_value (copy):qk]&quot;</bucket>
+        </map>
+        <map to=':filled/square'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:param1_value (copy):qk]&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:total:qk]&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)]&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:count:qk]&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[cum:sum:value:qk:5]&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:group:nk]' type='palette'>
+        <map to='#17becf'>
+          <bucket>&quot;District of Columbia&quot;</bucket>
+        </map>
+        <map to='#17becf'>
+          <bucket>&quot;Nevada&quot;</bucket>
+        </map>
+        <map to='#17becf'>
+          <bucket>&quot;West Virginia&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;Georgia&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;Midwest&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;New Jersey&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;Wyoming&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;Indiana&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;North Dakota&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;West&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;California&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;Mississippi&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;Utah&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;Alabama&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;Maryland&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;South Carolina&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;76\% - 100\%&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;Louisiana&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;Pennsylvania&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;25\% or less&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;Iowa&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;Ohio&quot;</bucket>
+        </map>
+        <map to='#9edae5'>
+          <bucket>&quot;Florida&quot;</bucket>
+        </map>
+        <map to='#9edae5'>
+          <bucket>&quot;New Hampshire&quot;</bucket>
+        </map>
+        <map to='#9edae5'>
+          <bucket>&quot;Wisconsin&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;Hawaii&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;National&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;New Mexico&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Connecticut&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Montana&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Virginia&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;Alaska&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;Massachusetts&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;South Dakota&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;Maine&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;Rhode Island&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;Statewide (100\%)&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;Colorado&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;Missouri&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;Vermont&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;26\% - 50\%&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Kansas&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Oklahoma&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;Delaware&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;Nebraska&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;Washington&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Arizona&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Michigan&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Tennessee&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Arkansas&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Minnesota&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Texas&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;Idaho&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;New York&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;Northeast&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;51\% - 75\%&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;Kentucky&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;Oregon&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;Illinois&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;North Carolina&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;South&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:xaxis:nk]' type='palette'>
+        <map to='#1f77b4'>
+          <bucket>&quot;actcat&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;ethcat2&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;pedcat&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;inccat&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;degcat&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:Selected Group (copy):nk]' type='palette'>
+        <map to='#17becf'>
+          <bucket>&quot;Hawaii&quot;</bucket>
+        </map>
+        <map to='#17becf'>
+          <bucket>&quot;Idaho&quot;</bucket>
+        </map>
+        <map to='#17becf'>
+          <bucket>&quot;New Jersey&quot;</bucket>
+        </map>
+        <map to='#17becf'>
+          <bucket>&quot;West&quot;</bucket>
+        </map>
+        <map to='#17becf'>
+          <bucket>&quot;West Virginia&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;Indiana&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;New York&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;Wyoming&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;51\% - 75\%&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;Louisiana&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;Oklahoma&quot;</bucket>
+        </map>
+        <map to='#4d4d4d'>
+          <bucket>&quot;3&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;Delaware&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;National&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;Utah&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;Arkansas&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;Minnesota&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;South Dakota&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;Alaska&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;Michigan&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;South&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;76\% - 100\%&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;Maine&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;Oregon&quot;</bucket>
+        </map>
+        <map to='#9edae5'>
+          <bucket>&quot;Illinois&quot;</bucket>
+        </map>
+        <map to='#9edae5'>
+          <bucket>&quot;New Mexico&quot;</bucket>
+        </map>
+        <map to='#9edae5'>
+          <bucket>&quot;Wisconsin&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;Iowa&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;North Carolina&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;North Dakota&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Florida&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Nevada&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Virginia&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;California&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;Mississippi&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;Statewide (100\%)&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;Arizona&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;Midwest&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;South Carolina&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;District of Columbia&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;Nebraska&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;Vermont&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Maryland&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Other&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Pennsylvania&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;Georgia&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;New Hampshire&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;Washington&quot;</bucket>
+        </map>
+        <map to='#e31b23'>
+          <bucket>&quot;1&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Colorado&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Missouri&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Tennessee&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Connecticut&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Montana&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Texas&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;25\% or less&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;Kansas&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;Northeast&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;Alabama&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;Massachusetts&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;Rhode Island&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;26\% - 50\%&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;Kentucky&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;Ohio&quot;</bucket>
+        </map>
+        <map to='#ffbd4c'>
+          <bucket>&quot;2&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[:Measure Names]' type='palette'>
+        <map to='#252424'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:param2_value (copy):qk]&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:value:qk]&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:total:qk]&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[cum:sum:value:qk:5]&quot;</bucket>
+        </map>
+        <map to='#c51b8a'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:Calculation_9710325162256454:qk]&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)]&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:count:qk]&quot;</bucket>
+        </map>
+        <map to='#ffbd4c'>
+          <bucket>&quot;[csv.41303.421501273151 (copy 3)].[sum:param1_value (copy):qk]&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:suborder:ok]' type='palette'>
+        <map to='#1f77b4'>
+          <bucket>1</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>3</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>2</bucket>
+        </map>
+      </encoding>
+      <encoding attr='shape' field='[none:Selected Group (copy):nk]' type='shape'>
+        <map to=':filled/diamond'>
+          <bucket>&quot;3&quot;</bucket>
+        </map>
+        <map to=':filled/square'>
+          <bucket>&quot;2&quot;</bucket>
+        </map>
+        <map to=':filled/triangle'>
+          <bucket>&quot;1&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;26\% - 50\%&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;District of Columbia&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;Louisiana&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;National&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;Oklahoma&quot;</bucket>
+        </map>
+        <map to='asterisk'>
+          <bucket>&quot;Utah&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;Arkansas&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;Indiana&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;Minnesota&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;New York&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;South Dakota&quot;</bucket>
+        </map>
+        <map to='circle'>
+          <bucket>&quot;Wyoming&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;51\% - 75\%&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;Florida&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;Maine&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;Nebraska&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;Oregon&quot;</bucket>
+        </map>
+        <map to='diamond'>
+          <bucket>&quot;Vermont&quot;</bucket>
+        </map>
+        <map to='down-triangle'>
+          <bucket>&quot;Alabama&quot;</bucket>
+        </map>
+        <map to='down-triangle'>
+          <bucket>&quot;Hawaii&quot;</bucket>
+        </map>
+        <map to='down-triangle'>
+          <bucket>&quot;Massachusetts&quot;</bucket>
+        </map>
+        <map to='down-triangle'>
+          <bucket>&quot;New Hampshire&quot;</bucket>
+        </map>
+        <map to='down-triangle'>
+          <bucket>&quot;Rhode Island&quot;</bucket>
+        </map>
+        <map to='down-triangle'>
+          <bucket>&quot;Washington&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;Alaska&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;Idaho&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;Michigan&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;New Jersey&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;South&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;West&quot;</bucket>
+        </map>
+        <map to='left-triangle'>
+          <bucket>&quot;West Virginia&quot;</bucket>
+        </map>
+        <map to='plus'>
+          <bucket>&quot;25\% or less&quot;</bucket>
+        </map>
+        <map to='plus'>
+          <bucket>&quot;Connecticut&quot;</bucket>
+        </map>
+        <map to='plus'>
+          <bucket>&quot;Kansas&quot;</bucket>
+        </map>
+        <map to='plus'>
+          <bucket>&quot;Missouri&quot;</bucket>
+        </map>
+        <map to='plus'>
+          <bucket>&quot;Northeast&quot;</bucket>
+        </map>
+        <map to='plus'>
+          <bucket>&quot;Tennessee&quot;</bucket>
+        </map>
+        <map to='right-triangle'>
+          <bucket>&quot;Arizona&quot;</bucket>
+        </map>
+        <map to='right-triangle'>
+          <bucket>&quot;Illinois&quot;</bucket>
+        </map>
+        <map to='right-triangle'>
+          <bucket>&quot;Midwest&quot;</bucket>
+        </map>
+        <map to='right-triangle'>
+          <bucket>&quot;New Mexico&quot;</bucket>
+        </map>
+        <map to='right-triangle'>
+          <bucket>&quot;South Carolina&quot;</bucket>
+        </map>
+        <map to='right-triangle'>
+          <bucket>&quot;Wisconsin&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;California&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;Colorado&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;Iowa&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;Mississippi&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;North Carolina&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;North Dakota&quot;</bucket>
+        </map>
+        <map to='square'>
+          <bucket>&quot;Statewide (100\%)&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;Delaware&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;Kentucky&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;Montana&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;Ohio&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;Other&quot;</bucket>
+        </map>
+        <map to='times'>
+          <bucket>&quot;Texas&quot;</bucket>
+        </map>
+        <map to='triangle'>
+          <bucket>&quot;76\% - 100\%&quot;</bucket>
+        </map>
+        <map to='triangle'>
+          <bucket>&quot;Georgia&quot;</bucket>
+        </map>
+        <map to='triangle'>
+          <bucket>&quot;Maryland&quot;</bucket>
+        </map>
+        <map to='triangle'>
+          <bucket>&quot;Nevada&quot;</bucket>
+        </map>
+        <map to='triangle'>
+          <bucket>&quot;Pennsylvania&quot;</bucket>
+        </map>
+        <map to='triangle'>
+          <bucket>&quot;Virginia&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:p_group_selected (order) (copy):nk]' type='palette'>
+        <map to='#1f77b4'>
+          <bucket>&quot;1&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;3&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;4&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;2&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[usr:Calculation_7671107143925777:ok:2]' type='palette'>
+        <map to='#0072bc'>
+          <bucket>0</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>4</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>-2</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>5</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>2</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>15</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>11</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>9</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>6</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>17</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>12</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>10</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>16</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>-3</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>7</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>18</bucket>
+        </map>
+        <map to='#e31b23'>
+          <bucket>3</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>13</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>1</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>14</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>-1</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>8</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:subcat:nk]' type='palette'>
+        <map to='#0072bc'>
+          <bucket>&quot;1. &lt; 25 miles&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;2. In State&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;3. 2-year&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;&lt; Grade 12&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;&lt;12th Grade&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;&lt;26 miles&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;Did not answer&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;Do not need help educational and occupational plan&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;Major is not the most important factor&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;Not sure&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;Out of State&quot;</bucket>
+        </map>
+        <map to='#0072bc'>
+          <bucket>&quot;Poor&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;2-year&quot;</bucket>
+        </map>
+        <map to='#1f77b4'>
+          <bucket>&quot;Agric. &amp; Nat. Res. Cons&quot;</bucket>
+        </map>
+        <map to='#2ca02c'>
+          <bucket>&quot;Business&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;2. 4-year Private&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;3. &gt; 100 miles&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;4-year Private&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;&gt;100 miles&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;Good&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;Selected a planned major&quot;</bucket>
+        </map>
+        <map to='#72bf44'>
+          <bucket>&quot;Very sure&quot;</bucket>
+        </map>
+        <map to='#7f7f7f'>
+          <bucket>&quot;Philosophy, Religion, &amp; Theology&quot;</bucket>
+        </map>
+        <map to='#8c564b'>
+          <bucket>&quot;Engineering&quot;</bucket>
+        </map>
+        <map to='#9467bd'>
+          <bucket>&quot;Education&quot;</bucket>
+        </map>
+        <map to='#98df8a'>
+          <bucket>&quot;Commun, Fam., &amp; Personal Svcs&quot;</bucket>
+        </map>
+        <map to='#aec7e8'>
+          <bucket>&quot;Architecture&quot;</bucket>
+        </map>
+        <map to='#bcbd22'>
+          <bucket>&quot;Sciences: Biological &amp; Physical&quot;</bucket>
+        </map>
+        <map to='#c49c94'>
+          <bucket>&quot;English &amp; Foreign Lang.&quot;</bucket>
+        </map>
+        <map to='#c5b0d5'>
+          <bucket>&quot;Eng. Tech. &amp; Drafting&quot;</bucket>
+        </map>
+        <map to='#c7c7c7'>
+          <bucket>&quot;Repair, Production, &amp; Construction&quot;</bucket>
+        </map>
+        <map to='#d62728'>
+          <bucket>&quot;Communications&quot;</bucket>
+        </map>
+        <map to='#dbdb8d'>
+          <bucket>&quot;Social Sciences &amp; Law&quot;</bucket>
+        </map>
+        <map to='#e377c2'>
+          <bucket>&quot;Health Admin. &amp; Assisting&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;1. 4-year Public&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;1. Out of State&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;12th Grade&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;2. 25-100 miles&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;26-100 miles&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;4-year Public&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Fairly sure&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Grade 12&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;In State&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Indicated they were undecided&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Major is the most important factor&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Moderate&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Need help with educational and occupational plans&quot;</bucket>
+        </map>
+        <map to='#f7b6d2'>
+          <bucket>&quot;Health Sci. &amp; Techno.&quot;</bucket>
+        </map>
+        <map to='#ff7f0e'>
+          <bucket>&quot;Area, Eth. &amp; Multidiscip. Studies&quot;</bucket>
+        </map>
+        <map to='#ff9896'>
+          <bucket>&quot;Comp. Sci. &amp; Mathematics&quot;</bucket>
+        </map>
+        <map to='#ffbb78'>
+          <bucket>&quot;Arts: Visual &amp; Performing&quot;</bucket>
+        </map>
+      </encoding>
+      <encoding attr='color' field='[none:xlabel:nk]' type='palette'>
+        <map to='#0072bc'>
+          <bucket>&quot;Female&quot;</bucket>
+        </map>
+        <map to='#f26127'>
+          <bucket>&quot;Male&quot;</bucket>
+        </map>
+      </encoding>
+    </style-rule>
+  </style>
+  <semantic-values>
+    <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+  </semantic-values>
+  <default-sorts>
+    <sort class='manual' column='[none:chart:nk]' direction='ASC'>
+      <dictionary>
+        <bucket>&quot;College type pref&quot;</bucket>
+        <bucket>&quot;Out state pref&quot;</bucket>
+        <bucket>&quot;Distance pref&quot;</bucket>
+        <bucket>&quot;Retest rate&quot;</bucket>
+        <bucket>&quot;Score sending&quot;</bucket>
+        <bucket>&quot;EOS opt-in rate&quot;</bucket>
+        <bucket>&quot;EOS selection rate&quot;</bucket>
+        <bucket>&quot;EOS selection avg&quot;</bucket>
+        <bucket>&quot;EOS score sending&quot;</bucket>
+      </dictionary>
+    </sort>
+    <sort class='manual' column='[none:group:nk]' direction='ASC'>
+      <dictionary>
+        <bucket>&quot;Midwest&quot;</bucket>
+        <bucket>&quot;National&quot;</bucket>
+        <bucket>&quot;Northeast&quot;</bucket>
+        <bucket>&quot;South&quot;</bucket>
+        <bucket>&quot;West&quot;</bucket>
+        <bucket>&quot;25\% or less&quot;</bucket>
+        <bucket>&quot;26\% - 50\%&quot;</bucket>
+        <bucket>&quot;51\% - 75\%&quot;</bucket>
+        <bucket>&quot;76\% - 100\%&quot;</bucket>
+        <bucket>&quot;Statewide (100\%)&quot;</bucket>
+        <bucket>&quot;Alabama&quot;</bucket>
+        <bucket>&quot;Alaska&quot;</bucket>
+        <bucket>&quot;Arizona&quot;</bucket>
+        <bucket>&quot;Arkansas&quot;</bucket>
+        <bucket>&quot;California&quot;</bucket>
+        <bucket>&quot;Colorado&quot;</bucket>
+        <bucket>&quot;Connecticut&quot;</bucket>
+        <bucket>&quot;Delaware&quot;</bucket>
+        <bucket>&quot;District of Columbia&quot;</bucket>
+        <bucket>&quot;Florida&quot;</bucket>
+        <bucket>&quot;Georgia&quot;</bucket>
+        <bucket>&quot;Hawaii&quot;</bucket>
+        <bucket>&quot;Idaho&quot;</bucket>
+        <bucket>&quot;Illinois&quot;</bucket>
+        <bucket>&quot;Indiana&quot;</bucket>
+        <bucket>&quot;Iowa&quot;</bucket>
+        <bucket>&quot;Kansas&quot;</bucket>
+        <bucket>&quot;Kentucky&quot;</bucket>
+        <bucket>&quot;Louisiana&quot;</bucket>
+        <bucket>&quot;Maine&quot;</bucket>
+        <bucket>&quot;Maryland&quot;</bucket>
+        <bucket>&quot;Massachusetts&quot;</bucket>
+        <bucket>&quot;Michigan&quot;</bucket>
+        <bucket>&quot;Minnesota&quot;</bucket>
+        <bucket>&quot;Mississippi&quot;</bucket>
+        <bucket>&quot;Missouri&quot;</bucket>
+        <bucket>&quot;Montana&quot;</bucket>
+        <bucket>&quot;Nebraska&quot;</bucket>
+        <bucket>&quot;Nevada&quot;</bucket>
+        <bucket>&quot;New Hampshire&quot;</bucket>
+        <bucket>&quot;New Jersey&quot;</bucket>
+        <bucket>&quot;New Mexico&quot;</bucket>
+        <bucket>&quot;New York&quot;</bucket>
+        <bucket>&quot;North Carolina&quot;</bucket>
+        <bucket>&quot;North Dakota&quot;</bucket>
+        <bucket>&quot;Ohio&quot;</bucket>
+        <bucket>&quot;Oklahoma&quot;</bucket>
+        <bucket>&quot;Oregon&quot;</bucket>
+        <bucket>&quot;Pennsylvania&quot;</bucket>
+        <bucket>&quot;Rhode Island&quot;</bucket>
+        <bucket>&quot;South Carolina&quot;</bucket>
+        <bucket>&quot;South Dakota&quot;</bucket>
+        <bucket>&quot;Tennessee&quot;</bucket>
+        <bucket>&quot;Texas&quot;</bucket>
+        <bucket>&quot;Utah&quot;</bucket>
+        <bucket>&quot;Vermont&quot;</bucket>
+        <bucket>&quot;Virginia&quot;</bucket>
+        <bucket>&quot;Washington&quot;</bucket>
+        <bucket>&quot;West Virginia&quot;</bucket>
+        <bucket>&quot;Wisconsin&quot;</bucket>
+        <bucket>&quot;Wyoming&quot;</bucket>
+      </dictionary>
+    </sort>
+    <sort class='manual' column='[none:subcat:nk]' direction='ASC'>
+      <dictionary>
+        <bucket>&quot;4-year Private&quot;</bucket>
+        <bucket>&quot;4-year Public&quot;</bucket>
+        <bucket>&quot;2-year&quot;</bucket>
+        <bucket>&quot;12th Grade&quot;</bucket>
+        <bucket>&quot;&lt;12th Grade&quot;</bucket>
+        <bucket>&quot;&gt;100 miles&quot;</bucket>
+        <bucket>&quot;26-100 miles&quot;</bucket>
+        <bucket>&quot;&lt;26 miles&quot;</bucket>
+        <bucket>&quot;In State&quot;</bucket>
+        <bucket>&quot;Out of State&quot;</bucket>
+      </dictionary>
+    </sort>
+    <sort class='manual' column='[none:xlabel:nk]' direction='ASC'>
+      <dictionary>
+        <bucket>&quot;1-15&quot;</bucket>
+        <bucket>&quot;16-19&quot;</bucket>
+        <bucket>&quot;20-23&quot;</bucket>
+        <bucket>&quot;24-27&quot;</bucket>
+        <bucket>&quot;28-32&quot;</bucket>
+        <bucket>&quot;33-36&quot;</bucket>
+        <bucket>&quot;&lt;$36K&quot;</bucket>
+        <bucket>&quot;$36K-$60K&quot;</bucket>
+        <bucket>&quot;$60K-$100K&quot;</bucket>
+        <bucket>&quot;$100K+&quot;</bucket>
+        <bucket>&quot;Afr Am&quot;</bucket>
+        <bucket>&quot;Am Ind&quot;</bucket>
+        <bucket>&quot;Asian&quot;</bucket>
+        <bucket>&quot;Hisp&quot;</bucket>
+        <bucket>&quot;Pac Isl&quot;</bucket>
+        <bucket>&quot;White&quot;</bucket>
+        <bucket>&quot;Other&quot;</bucket>
+        <bucket>&quot;&lt;Bach&quot;</bucket>
+        <bucket>&quot;Bachelor&apos;s&quot;</bucket>
+        <bucket>&quot;Graduate&quot;</bucket>
+        <bucket>&quot;Other/Missing&quot;</bucket>
+        <bucket>&quot;No College&quot;</bucket>
+        <bucket>&quot;Some College&quot;</bucket>
+        <bucket>&quot;Bach Degree&quot;</bucket>
+        <bucket>&quot;Graduate Degree&quot;</bucket>
+        <bucket>&quot;Missing&quot;</bucket>
+      </dictionary>
+    </sort>
+  </default-sorts>
+  <datasource-dependencies datasource='Parameters'>
+    <column caption='Comparison 1' datatype='string' name='[Comparison 1 (copy 2)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Alabama&quot;'>
+      <calculation class='tableau' formula='&quot;Alabama&quot;' />
+      <aliases>
+        <alias key='&quot;25\% or less&quot;' value='ACT-Tested 25% or less' />
+        <alias key='&quot;26\% - 50\%&quot;' value='ACT-Tested 26% - 50%' />
+        <alias key='&quot;51\% - 75\%&quot;' value='ACT-Tested 51% - 75%' />
+        <alias key='&quot;76\% - 100\%&quot;' value='ACT-Tested 76% - 100%' />
+        <alias key='&quot;Midwest&quot;' value='Region: Midwest' />
+        <alias key='&quot;National&quot;' value='Region: National' />
+        <alias key='&quot;Northeast&quot;' value='Region: Northeast' />
+        <alias key='&quot;South&quot;' value='Region: South' />
+        <alias key='&quot;Statewide (100\%)&quot;' value='ACT-Tested Statewide (100%)' />
+        <alias key='&quot;West&quot;' value='Region: West' />
+      </aliases>
+      <members>
+        <member alias='Region: National' value='&quot;National&quot;' />
+        <member alias='Region: Midwest' value='&quot;Midwest&quot;' />
+        <member alias='Region: Northeast' value='&quot;Northeast&quot;' />
+        <member alias='Region: South' value='&quot;South&quot;' />
+        <member alias='Region: West' value='&quot;West&quot;' />
+        <member alias='ACT-Tested 25% or less' value='&quot;25\% or less&quot;' />
+        <member alias='ACT-Tested 26% - 50%' value='&quot;26\% - 50\%&quot;' />
+        <member alias='ACT-Tested 51% - 75%' value='&quot;51\% - 75\%&quot;' />
+        <member alias='ACT-Tested 76% - 100%' value='&quot;76\% - 100\%&quot;' />
+        <member alias='ACT-Tested Statewide (100%)' value='&quot;Statewide (100\%)&quot;' />
+        <member value='&quot;Alabama&quot;' />
+        <member value='&quot;Alaska&quot;' />
+        <member value='&quot;Arizona&quot;' />
+        <member value='&quot;Arkansas&quot;' />
+        <member value='&quot;California&quot;' />
+        <member value='&quot;Colorado&quot;' />
+        <member value='&quot;Connecticut&quot;' />
+        <member value='&quot;Delaware&quot;' />
+        <member value='&quot;District of Columbia&quot;' />
+        <member value='&quot;Florida&quot;' />
+        <member value='&quot;Georgia&quot;' />
+        <member value='&quot;Hawaii&quot;' />
+        <member value='&quot;Idaho&quot;' />
+        <member value='&quot;Illinois&quot;' />
+        <member value='&quot;Indiana&quot;' />
+        <member value='&quot;Iowa&quot;' />
+        <member value='&quot;Kansas&quot;' />
+        <member value='&quot;Kentucky&quot;' />
+        <member value='&quot;Louisiana&quot;' />
+        <member value='&quot;Maine&quot;' />
+        <member value='&quot;Maryland&quot;' />
+        <member value='&quot;Massachusetts&quot;' />
+        <member value='&quot;Michigan&quot;' />
+        <member value='&quot;Minnesota&quot;' />
+        <member value='&quot;Mississippi&quot;' />
+        <member value='&quot;Missouri&quot;' />
+        <member value='&quot;Montana&quot;' />
+        <member value='&quot;Nebraska&quot;' />
+        <member value='&quot;Nevada&quot;' />
+        <member value='&quot;New Hampshire&quot;' />
+        <member value='&quot;New Jersey&quot;' />
+        <member value='&quot;New Mexico&quot;' />
+        <member value='&quot;New York&quot;' />
+        <member value='&quot;North Carolina&quot;' />
+        <member value='&quot;North Dakota&quot;' />
+        <member value='&quot;Ohio&quot;' />
+        <member value='&quot;Oklahoma&quot;' />
+        <member value='&quot;Oregon&quot;' />
+        <member value='&quot;Pennsylvania&quot;' />
+        <member value='&quot;Rhode Island&quot;' />
+        <member value='&quot;South Carolina&quot;' />
+        <member value='&quot;South Dakota&quot;' />
+        <member value='&quot;Tennessee&quot;' />
+        <member value='&quot;Texas&quot;' />
+        <member value='&quot;Utah&quot;' />
+        <member value='&quot;Vermont&quot;' />
+        <member value='&quot;Virginia&quot;' />
+        <member value='&quot;Washington&quot;' />
+        <member value='&quot;West Virginia&quot;' />
+        <member value='&quot;Wisconsin&quot;' />
+        <member value='&quot;Wyoming&quot;' />
+      </members>
+    </column>
+    <column alias='Region: South' caption='Comparison 2' datatype='string' name='[Comparison 1_2 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;South&quot;'>
+      <calculation class='tableau' formula='&quot;South&quot;' />
+      <aliases>
+        <alias key='&quot;25\% or less&quot;' value='ACT-Tested 25% or less' />
+        <alias key='&quot;26\% - 50\%&quot;' value='ACT-Tested 26% - 50%' />
+        <alias key='&quot;51\% - 75\%&quot;' value='ACT-Tested 51% - 75%' />
+        <alias key='&quot;76\% - 100\%&quot;' value='ACT-Tested 76% - 100%' />
+        <alias key='&quot;Midwest&quot;' value='Region: Midwest' />
+        <alias key='&quot;National&quot;' value='Region: National' />
+        <alias key='&quot;None&quot;' value='--== None ==--' />
+        <alias key='&quot;Northeast&quot;' value='Region: Northeast' />
+        <alias key='&quot;South&quot;' value='Region: South' />
+        <alias key='&quot;Statewide (100\%)&quot;' value='ACT-Tested Statewide (100%)' />
+        <alias key='&quot;West&quot;' value='Region: West' />
+      </aliases>
+      <members>
+        <member alias='Region: National' value='&quot;National&quot;' />
+        <member alias='Region: Midwest' value='&quot;Midwest&quot;' />
+        <member alias='Region: Northeast' value='&quot;Northeast&quot;' />
+        <member alias='Region: South' value='&quot;South&quot;' />
+        <member alias='Region: West' value='&quot;West&quot;' />
+        <member alias='ACT-Tested 25% or less' value='&quot;25\% or less&quot;' />
+        <member alias='ACT-Tested 26% - 50%' value='&quot;26\% - 50\%&quot;' />
+        <member alias='ACT-Tested 51% - 75%' value='&quot;51\% - 75\%&quot;' />
+        <member alias='ACT-Tested 76% - 100%' value='&quot;76\% - 100\%&quot;' />
+        <member alias='ACT-Tested Statewide (100%)' value='&quot;Statewide (100\%)&quot;' />
+        <member alias='--== None ==--' value='&quot;None&quot;' />
+        <member value='&quot;Alabama&quot;' />
+        <member value='&quot;Alaska&quot;' />
+        <member value='&quot;Arizona&quot;' />
+        <member value='&quot;Arkansas&quot;' />
+        <member value='&quot;California&quot;' />
+        <member value='&quot;Colorado&quot;' />
+        <member value='&quot;Connecticut&quot;' />
+        <member value='&quot;Delaware&quot;' />
+        <member value='&quot;District of Columbia&quot;' />
+        <member value='&quot;Florida&quot;' />
+        <member value='&quot;Georgia&quot;' />
+        <member value='&quot;Hawaii&quot;' />
+        <member value='&quot;Idaho&quot;' />
+        <member value='&quot;Illinois&quot;' />
+        <member value='&quot;Indiana&quot;' />
+        <member value='&quot;Iowa&quot;' />
+        <member value='&quot;Kansas&quot;' />
+        <member value='&quot;Kentucky&quot;' />
+        <member value='&quot;Louisiana&quot;' />
+        <member value='&quot;Maine&quot;' />
+        <member value='&quot;Maryland&quot;' />
+        <member value='&quot;Massachusetts&quot;' />
+        <member value='&quot;Michigan&quot;' />
+        <member value='&quot;Minnesota&quot;' />
+        <member value='&quot;Mississippi&quot;' />
+        <member value='&quot;Missouri&quot;' />
+        <member value='&quot;Montana&quot;' />
+        <member value='&quot;Nebraska&quot;' />
+        <member value='&quot;Nevada&quot;' />
+        <member value='&quot;New Hampshire&quot;' />
+        <member value='&quot;New Jersey&quot;' />
+        <member value='&quot;New Mexico&quot;' />
+        <member value='&quot;New York&quot;' />
+        <member value='&quot;North Carolina&quot;' />
+        <member value='&quot;North Dakota&quot;' />
+        <member value='&quot;Ohio&quot;' />
+        <member value='&quot;Oklahoma&quot;' />
+        <member value='&quot;Oregon&quot;' />
+        <member value='&quot;Pennsylvania&quot;' />
+        <member value='&quot;Rhode Island&quot;' />
+        <member value='&quot;South Carolina&quot;' />
+        <member value='&quot;South Dakota&quot;' />
+        <member value='&quot;Tennessee&quot;' />
+        <member value='&quot;Texas&quot;' />
+        <member value='&quot;Utah&quot;' />
+        <member value='&quot;Vermont&quot;' />
+        <member value='&quot;Virginia&quot;' />
+        <member value='&quot;Washington&quot;' />
+        <member value='&quot;West Virginia&quot;' />
+        <member value='&quot;Wisconsin&quot;' />
+        <member value='&quot;Wyoming&quot;' />
+      </members>
+    </column>
+    <column alias='Region: National' caption='Comparison 3' datatype='string' name='[Comparison 2_2 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;National&quot;'>
+      <calculation class='tableau' formula='&quot;National&quot;' />
+      <aliases>
+        <alias key='&quot;25\% or less&quot;' value='ACT-Tested 25% or less' />
+        <alias key='&quot;26\% - 50\%&quot;' value='ACT-Tested 26% - 50%' />
+        <alias key='&quot;51\% - 75\%&quot;' value='ACT-Tested 51% - 75%' />
+        <alias key='&quot;76\% - 100\%&quot;' value='ACT-Tested 76% - 100%' />
+        <alias key='&quot;Midwest&quot;' value='Region: Midwest' />
+        <alias key='&quot;National&quot;' value='Region: National' />
+        <alias key='&quot;None&quot;' value='--== None ==--' />
+        <alias key='&quot;Northeast&quot;' value='Region: Northeast' />
+        <alias key='&quot;South&quot;' value='Region: South' />
+        <alias key='&quot;Statewide (100\%)&quot;' value='ACT-Tested Statewide (100%)' />
+        <alias key='&quot;West&quot;' value='Region: West' />
+      </aliases>
+      <members>
+        <member alias='Region: National' value='&quot;National&quot;' />
+        <member alias='Region: Midwest' value='&quot;Midwest&quot;' />
+        <member alias='Region: Northeast' value='&quot;Northeast&quot;' />
+        <member alias='Region: South' value='&quot;South&quot;' />
+        <member alias='Region: West' value='&quot;West&quot;' />
+        <member alias='ACT-Tested 25% or less' value='&quot;25\% or less&quot;' />
+        <member alias='ACT-Tested 26% - 50%' value='&quot;26\% - 50\%&quot;' />
+        <member alias='ACT-Tested 51% - 75%' value='&quot;51\% - 75\%&quot;' />
+        <member alias='ACT-Tested 76% - 100%' value='&quot;76\% - 100\%&quot;' />
+        <member alias='ACT-Tested Statewide (100%)' value='&quot;Statewide (100\%)&quot;' />
+        <member alias='--== None ==--' value='&quot;None&quot;' />
+        <member value='&quot;Alabama&quot;' />
+        <member value='&quot;Alaska&quot;' />
+        <member value='&quot;Arizona&quot;' />
+        <member value='&quot;Arkansas&quot;' />
+        <member value='&quot;California&quot;' />
+        <member value='&quot;Colorado&quot;' />
+        <member value='&quot;Connecticut&quot;' />
+        <member value='&quot;Delaware&quot;' />
+        <member value='&quot;District of Columbia&quot;' />
+        <member value='&quot;Florida&quot;' />
+        <member value='&quot;Georgia&quot;' />
+        <member value='&quot;Hawaii&quot;' />
+        <member value='&quot;Idaho&quot;' />
+        <member value='&quot;Illinois&quot;' />
+        <member value='&quot;Indiana&quot;' />
+        <member value='&quot;Iowa&quot;' />
+        <member value='&quot;Kansas&quot;' />
+        <member value='&quot;Kentucky&quot;' />
+        <member value='&quot;Louisiana&quot;' />
+        <member value='&quot;Maine&quot;' />
+        <member value='&quot;Maryland&quot;' />
+        <member value='&quot;Massachusetts&quot;' />
+        <member value='&quot;Michigan&quot;' />
+        <member value='&quot;Minnesota&quot;' />
+        <member value='&quot;Mississippi&quot;' />
+        <member value='&quot;Missouri&quot;' />
+        <member value='&quot;Montana&quot;' />
+        <member value='&quot;Nebraska&quot;' />
+        <member value='&quot;Nevada&quot;' />
+        <member value='&quot;New Hampshire&quot;' />
+        <member value='&quot;New Jersey&quot;' />
+        <member value='&quot;New Mexico&quot;' />
+        <member value='&quot;New York&quot;' />
+        <member value='&quot;North Carolina&quot;' />
+        <member value='&quot;North Dakota&quot;' />
+        <member value='&quot;Ohio&quot;' />
+        <member value='&quot;Oklahoma&quot;' />
+        <member value='&quot;Oregon&quot;' />
+        <member value='&quot;Pennsylvania&quot;' />
+        <member value='&quot;Rhode Island&quot;' />
+        <member value='&quot;South Carolina&quot;' />
+        <member value='&quot;South Dakota&quot;' />
+        <member value='&quot;Tennessee&quot;' />
+        <member value='&quot;Texas&quot;' />
+        <member value='&quot;Utah&quot;' />
+        <member value='&quot;Vermont&quot;' />
+        <member value='&quot;Virginia&quot;' />
+        <member value='&quot;Washington&quot;' />
+        <member value='&quot;West Virginia&quot;' />
+        <member value='&quot;Wisconsin&quot;' />
+        <member value='&quot;Wyoming&quot;' />
+      </members>
+    </column>
+    <column caption='Major 3' datatype='string' name='[Major 1 (copy 2)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Engineering&quot;'>
+      <calculation class='tableau' formula='&quot;Engineering&quot;' />
+      <members>
+        <member value='&quot;Agric. &amp; Nat. Res. Cons&quot;' />
+        <member value='&quot;Architecture&quot;' />
+        <member value='&quot;Area, Eth. &amp; Multidiscip. Studies&quot;' />
+        <member value='&quot;Arts: Visual &amp; Performing&quot;' />
+        <member value='&quot;Business&quot;' />
+        <member value='&quot;Commun, Fam., &amp; Personal Svcs&quot;' />
+        <member value='&quot;Communications&quot;' />
+        <member value='&quot;Comp. Sci. &amp; Mathematics&quot;' />
+        <member value='&quot;Education&quot;' />
+        <member value='&quot;Eng. Tech. &amp; Drafting&quot;' />
+        <member value='&quot;Engineering&quot;' />
+        <member value='&quot;English &amp; Foreign Lang.&quot;' />
+        <member value='&quot;Health Admin. &amp; Assisting&quot;' />
+        <member value='&quot;Health Sci. &amp; Techno.&quot;' />
+        <member value='&quot;Philosophy, Religion, &amp; Theology&quot;' />
+        <member value='&quot;Repair, Production, &amp; Construction&quot;' />
+        <member value='&quot;Sciences: Biological &amp; Physical&quot;' />
+        <member value='&quot;Social Sciences &amp; Law&quot;' />
+      </members>
+    </column>
+    <column caption='Major 2' datatype='string' name='[Major 1 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Education&quot;'>
+      <calculation class='tableau' formula='&quot;Education&quot;' />
+      <members>
+        <member value='&quot;Agric. &amp; Nat. Res. Cons&quot;' />
+        <member value='&quot;Architecture&quot;' />
+        <member value='&quot;Area, Eth. &amp; Multidiscip. Studies&quot;' />
+        <member value='&quot;Arts: Visual &amp; Performing&quot;' />
+        <member value='&quot;Business&quot;' />
+        <member value='&quot;Commun, Fam., &amp; Personal Svcs&quot;' />
+        <member value='&quot;Communications&quot;' />
+        <member value='&quot;Comp. Sci. &amp; Mathematics&quot;' />
+        <member value='&quot;Education&quot;' />
+        <member value='&quot;Eng. Tech. &amp; Drafting&quot;' />
+        <member value='&quot;Engineering&quot;' />
+        <member value='&quot;English &amp; Foreign Lang.&quot;' />
+        <member value='&quot;Health Admin. &amp; Assisting&quot;' />
+        <member value='&quot;Health Sci. &amp; Techno.&quot;' />
+        <member value='&quot;Philosophy, Religion, &amp; Theology&quot;' />
+        <member value='&quot;Repair, Production, &amp; Construction&quot;' />
+        <member value='&quot;Sciences: Biological &amp; Physical&quot;' />
+        <member value='&quot;Social Sciences &amp; Law&quot;' />
+      </members>
+    </column>
+    <column caption='Major 4' datatype='string' name='[Major 2 (copy)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Health Sci. &amp; Techno.&quot;'>
+      <calculation class='tableau' formula='&quot;Health Sci. &amp; Techno.&quot;' />
+      <members>
+        <member value='&quot;Agric. &amp; Nat. Res. Cons&quot;' />
+        <member value='&quot;Architecture&quot;' />
+        <member value='&quot;Area, Eth. &amp; Multidiscip. Studies&quot;' />
+        <member value='&quot;Arts: Visual &amp; Performing&quot;' />
+        <member value='&quot;Business&quot;' />
+        <member value='&quot;Commun, Fam., &amp; Personal Svcs&quot;' />
+        <member value='&quot;Communications&quot;' />
+        <member value='&quot;Comp. Sci. &amp; Mathematics&quot;' />
+        <member value='&quot;Education&quot;' />
+        <member value='&quot;Eng. Tech. &amp; Drafting&quot;' />
+        <member value='&quot;Engineering&quot;' />
+        <member value='&quot;English &amp; Foreign Lang.&quot;' />
+        <member value='&quot;Health Admin. &amp; Assisting&quot;' />
+        <member value='&quot;Health Sci. &amp; Techno.&quot;' />
+        <member value='&quot;Philosophy, Religion, &amp; Theology&quot;' />
+        <member value='&quot;Repair, Production, &amp; Construction&quot;' />
+        <member value='&quot;Sciences: Biological &amp; Physical&quot;' />
+        <member value='&quot;Social Sciences &amp; Law&quot;' />
+      </members>
+    </column>
+    <column alias='ACT Composite Score Range' caption='Selected xAxis category' datatype='string' name='[Parameter 2]' param-domain-type='list' role='measure' type='nominal' value='&quot;actcat&quot;'>
+      <calculation class='tableau' formula='&quot;actcat&quot;' />
+      <aliases>
+        <alias key='&quot;actcat&quot;' value='ACT Composite Score Range' />
+        <alias key='&quot;degcat&quot;' value='Degree Plans' />
+        <alias key='&quot;ethcat2&quot;' value='Race/Ethnicity' />
+        <alias key='&quot;gencat&quot;' value='Gender' />
+        <alias key='&quot;inccat&quot;' value='Family Income Level' />
+        <alias key='&quot;pedcat&quot;' value='Parent Education Level' />
+      </aliases>
+      <members>
+        <member alias='ACT Composite Score Range' value='&quot;actcat&quot;' />
+        <member alias='Degree Plans' value='&quot;degcat&quot;' />
+        <member alias='Parent Education Level' value='&quot;pedcat&quot;' />
+        <member alias='Family Income Level' value='&quot;inccat&quot;' />
+        <member alias='Race/Ethnicity' value='&quot;ethcat2&quot;' />
+        <member alias='Gender' value='&quot;gencat&quot;' />
+      </members>
+    </column>
+    <column alias='Percent with Different Planned Major Statuses' caption='Selected Bar Chart (1)' datatype='string' name='[Parameter 3]' param-domain-type='list' role='measure' type='nominal' value='&quot;Planned major status&quot;'>
+      <calculation class='tableau' formula='&quot;Planned major status&quot;' />
+      <aliases>
+        <alias key='&quot;Certainty of major&quot;' value='Percent who are Very Sure of their Planned Major Choice' />
+        <alias key='&quot;Interest-major fit&quot;' value='Percent who have Good Interest-Major Fit' />
+        <alias key='&quot;Major as most important&quot;' value='Percent who Indicated Availability of College Major as Most Important College Choice Factor' />
+        <alias key='&quot;Need help with plans&quot;' value='Percent who Report Needing Assistance in Deciding their Educational/Occupational Plans' />
+        <alias key='&quot;Planned major status&quot;' value='Percent with Different Planned Major Statuses' />
+      </aliases>
+      <members>
+        <member alias='Percent with Different Planned Major Statuses' value='&quot;Planned major status&quot;' />
+        <member alias='Percent who are Very Sure of their Planned Major Choice' value='&quot;Certainty of major&quot;' />
+        <member alias='Percent who Report Needing Assistance in Deciding their Educational/Occupational Plans' value='&quot;Need help with plans&quot;' />
+        <member alias='Percent who have Good Interest-Major Fit' value='&quot;Interest-major fit&quot;' />
+        <member alias='Percent who Indicated Availability of College Major as Most Important College Choice Factor' value='&quot;Major as most important&quot;' />
+      </members>
+    </column>
+    <column caption='Major 1' datatype='string' name='[Parameter 4]' param-domain-type='list' role='measure' type='nominal' value='&quot;Business&quot;'>
+      <calculation class='tableau' formula='&quot;Business&quot;' />
+      <members>
+        <member value='&quot;Agric. &amp; Nat. Res. Cons&quot;' />
+        <member value='&quot;Architecture&quot;' />
+        <member value='&quot;Area, Eth. &amp; Multidiscip. Studies&quot;' />
+        <member value='&quot;Arts: Visual &amp; Performing&quot;' />
+        <member value='&quot;Business&quot;' />
+        <member value='&quot;Commun, Fam., &amp; Personal Svcs&quot;' />
+        <member value='&quot;Communications&quot;' />
+        <member value='&quot;Comp. Sci. &amp; Mathematics&quot;' />
+        <member value='&quot;Education&quot;' />
+        <member value='&quot;Eng. Tech. &amp; Drafting&quot;' />
+        <member value='&quot;Engineering&quot;' />
+        <member value='&quot;English &amp; Foreign Lang.&quot;' />
+        <member value='&quot;Health Admin. &amp; Assisting&quot;' />
+        <member value='&quot;Health Sci. &amp; Techno.&quot;' />
+        <member value='&quot;Philosophy, Religion, &amp; Theology&quot;' />
+        <member value='&quot;Repair, Production, &amp; Construction&quot;' />
+        <member value='&quot;Sciences: Biological &amp; Physical&quot;' />
+        <member value='&quot;Social Sciences &amp; Law&quot;' />
+      </members>
+    </column>
+    <column alias='Percent who Selected a Planned Major within Planned Major Areas' caption='Selected Bar Chart (2)' datatype='string' name='[Selected Bar Chart (part 1) (copy 2)]' param-domain-type='list' role='measure' type='nominal' value='&quot;Planned major choice&quot;'>
+      <calculation class='tableau' formula='&quot;Planned major choice&quot;' />
+      <aliases>
+        <alias key='&quot;Best-fit: Has major&quot;' value='Percent by Best Fitting Major Areas among those with Moderate/Poor Interest-Major Fit' />
+        <alias key='&quot;Best-fit: No major&quot;' value='Percent by Best Fitting Major Areas among those with No Planned Major Choice' />
+        <alias key='&quot;Planned major choice&quot;' value='Percent who Selected a Planned Major within Planned Major Areas' />
+      </aliases>
+      <members>
+        <member alias='Percent who Selected a Planned Major within Planned Major Areas' value='&quot;Planned major choice&quot;' />
+        <member alias='Percent by Best Fitting Major Areas among those with Moderate/Poor Interest-Major Fit' value='&quot;Best-fit: Has major&quot;' />
+        <member alias='Percent by Best Fitting Major Areas among those with No Planned Major Choice' value='&quot;Best-fit: No major&quot;' />
+      </members>
+    </column>
+  </datasource-dependencies>
+</datasource>
